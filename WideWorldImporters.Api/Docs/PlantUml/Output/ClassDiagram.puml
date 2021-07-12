@@ -1,0 +1,530 @@
+@startuml
+interface "IDataShaper"<T> {
+    ShapeData(entities:IEnumerable<T>, fieldsString:string) : IEnumerable<ShapedEntity>
+    ShapeData(entity:T, fieldsString:string) : ShapedEntity
+}
+interface ILoggerManager {
+    LogInfo(message:string) : void
+    LogWarn(message:string) : void
+    LogDebug(message:string) : void
+    LogError(message:string) : void
+}
+interface "IRepositoryBase"<T> {
+    FindAll(trackChanges:bool) : IQueryable<T>
+    FindByCondition(expression:Expression<Func<T, bool>>, trackChanges:bool) : IQueryable<T>
+    Create(entity:T) : void
+    Update(entity:T) : void
+    Delete(entity:T) : void
+}
+interface IRepositoryManager {
+    SaveAsync() : Task
+}
+IRepositoryManager --> "SupplierCategories" ISupplierCategoriesRepository
+IRepositoryManager --> "Supplier" ISupplierRepository
+IRepositoryManager --> "SupplierTransactions" ISupplierTransactionsRepository
+interface ISupplierCategoriesRepository {
+    GetAllSupplierCategoriesAsync(trackChanges:bool) : Task<IEnumerable<Purchasing_SupplierCategory>>
+    GetSupplierCategoryAsync(supplierCategoryId:int, trackChanges:bool) : Task<Purchasing_SupplierCategory>
+    CreateSupplierCategory(supplierCategory:Purchasing_SupplierCategory) : void
+    GetByIdsAsync(ids:IEnumerable<int>, trackChanges:bool) : Task<IEnumerable<Purchasing_SupplierCategory>>
+    DeleteSupplierCategory(supplierCategory:Purchasing_SupplierCategory) : void
+}
+interface ISupplierRepository {
+    GetSuppliersAsync(trackChanges:bool) : Task<IEnumerable<Purchasing_Supplier>>
+    GetSupplierAsync(supplierId:int, trackChanges:bool) : Task<Purchasing_Supplier>
+    GetSuppliersForASupplierCategoryAsync(supplierCategoryId:int, trackChanges:bool) : Task<IEnumerable<Purchasing_Supplier>>
+    GetSupplierForASupplierCategoryAsync(supplierCategoryId:int, supplierId:int, trackChanges:bool) : Task<Purchasing_Supplier>
+    CreateSupplier(supplier:Purchasing_Supplier) : void
+    CreateSupplierForSupplierCategory(supplierCategoryId:int, supplier:Purchasing_Supplier) : void
+    DeleteSupplier(supplier:Purchasing_Supplier) : void
+}
+interface ISupplierTransactionsRepository {
+    GetAllSupplierTransactionsAsync(supplierParameters:SupplierParameters, trackChanges:bool) : Task<PagedList<Purchasing_SupplierTransaction>>
+    GetAllTransactionsForASupplierAsync(supplierId:int, supplierParameters:SupplierParameters, trackChanges:bool) : Task<PagedList<Purchasing_SupplierTransaction>>
+    GetSupplierTransactionAsync(supplierId:int, supplierTransactionId:int, trackChanges:bool) : Task<Purchasing_SupplierTransaction>
+    GetTransactionsForASupplier(supplierId:int, trackChanges:bool) : Task<IEnumerable<Purchasing_SupplierTransaction>>
+    CreateSupplierTransaction(supplierTransaction:Purchasing_SupplierTransaction) : void
+    GetByIdsAsync(ids:IEnumerable<int>, trackChanges:bool) : Task<IEnumerable<Purchasing_SupplierTransaction>>
+    DeleteSupplierTransaction(supplierTransaction:Purchasing_SupplierTransaction) : void
+}
+interface IAppConfigSettings {
+    LogSqlServer : bool <<get>> <<set>>
+    DeleteLog : bool <<get>> <<set>>
+}
+class AppConfigSettings {
+    + LogSqlServer : bool <<get>> <<set>>
+    + DeleteLog : bool <<get>> <<set>>
+}
+interface IAppConfiguration {
+    LogSqlServer : bool <<get>> <<set>>
+    DeleteLog : bool <<get>> <<set>>
+}
+class AppConfiguration {
+    + LogSqlServer : bool <<get>> <<set>>
+    + DeleteLog : bool <<get>> <<set>>
+}
+IAppConfiguration <|-- AppConfiguration
+class RepositoryContext {
+    + RepositoryContext(appConfigSettings:IOptions<AppConfigSettings>)
+    + RepositoryContext(options:DbContextOptions<WideWorldImportersDbContext>, appConfigSettings:IOptions<AppConfigSettings>)
+}
+class LoggerManager {
+    + LogDebug(message:string) : void
+    + LogError(message:string) : void
+    + LogInfo(message:string) : void
+    + LogWarn(message:string) : void
+}
+ILoggerManager <|-- LoggerManager
+abstract class "RepositoryBase"<T> {
+    + RepositoryBase(repositoryContext:RepositoryContext)
+    + FindAll(trackChanges:bool) : IQueryable<T>
+    + FindByCondition(expression:Expression<Func<T, bool>>, trackChanges:bool) : IQueryable<T>
+    + Create(entity:T) : void
+    + Update(entity:T) : void
+    + Delete(entity:T) : void
+}
+class "IRepositoryBase"<T> {
+}
+"IRepositoryBase" "<T>" <|-- "RepositoryBase"
+class RepositoryManager {
+    + RepositoryManager(repositoryContext:RepositoryContext)
+    + SaveAsync() : Task
+}
+IRepositoryManager <|-- RepositoryManager
+RepositoryManager --> "SupplierCategories" ISupplierCategoriesRepository
+RepositoryManager --> "Supplier" ISupplierRepository
+RepositoryManager --> "SupplierTransactions" ISupplierTransactionsRepository
+class SupplierCategoriesRepository <<sealed>> {
+    + SupplierCategoriesRepository(repositoryContext:RepositoryContext)
+    + <<async>> GetAllSupplierCategoriesAsync(trackChanges:bool) : Task<IEnumerable<Purchasing_SupplierCategory>>
+    + <<async>> GetSupplierCategoryAsync(supplierCategoryId:int, trackChanges:bool) : Task<Purchasing_SupplierCategory>
+    + CreateSupplierCategory(supplierCategory:Purchasing_SupplierCategory) : void
+    + <<async>> GetByIdsAsync(ids:IEnumerable<int>, trackChanges:bool) : Task<IEnumerable<Purchasing_SupplierCategory>>
+    + DeleteSupplierCategory(supplierCategory:Purchasing_SupplierCategory) : void
+}
+class "RepositoryBase"<T> {
+}
+"RepositoryBase" "<Purchasing_SupplierCategory>" <|-- SupplierCategoriesRepository
+ISupplierCategoriesRepository <|-- SupplierCategoriesRepository
+class SupplierRepository <<sealed>> {
+    + SupplierRepository(repositoryContext:RepositoryContext)
+    + <<async>> GetSuppliersAsync(trackChanges:bool) : Task<IEnumerable<Purchasing_Supplier>>
+    + <<async>> GetSupplierAsync(supplierId:int, trackChanges:bool) : Task<Purchasing_Supplier>
+    + <<async>> GetSuppliersForASupplierCategoryAsync(supplierCategoryId:int, trackChanges:bool) : Task<IEnumerable<Purchasing_Supplier>>
+    + <<async>> GetSupplierForASupplierCategoryAsync(supplierCategoryId:int, supplierId:int, trackChanges:bool) : Task<Purchasing_Supplier>
+    + CreateSupplier(supplier:Purchasing_Supplier) : void
+    + CreateSupplierForSupplierCategory(supplierCategoryId:int, supplier:Purchasing_Supplier) : void
+    + DeleteSupplier(supplier:Purchasing_Supplier) : void
+}
+class "RepositoryBase"<T> {
+}
+"RepositoryBase" "<Purchasing_Supplier>" <|-- SupplierRepository
+ISupplierRepository <|-- SupplierRepository
+class SupplierTransactionsRepository <<sealed>> {
+    + SupplierTransactionsRepository(repositoryContext:RepositoryContext)
+    + <<async>> GetAllSupplierTransactionsAsync(supplierParameters:SupplierParameters, trackChanges:bool) : Task<PagedList<Purchasing_SupplierTransaction>>
+    + <<async>> GetSupplierTransactionAsync(supplierId:int, supplierTransactionId:int, trackChanges:bool) : Task<Purchasing_SupplierTransaction>
+    + <<async>> GetAllTransactionsForASupplierAsync(supplierId:int, supplierParameters:SupplierParameters, trackChanges:bool) : Task<PagedList<Purchasing_SupplierTransaction>>
+    + CreateSupplierTransaction(supplierTransaction:Purchasing_SupplierTransaction) : void
+    + <<async>> GetByIdsAsync(ids:IEnumerable<int>, trackChanges:bool) : Task<IEnumerable<Purchasing_SupplierTransaction>>
+    + <<async>> GetTransactionsForASupplier(supplierId:int, trackChanges:bool) : Task<IEnumerable<Purchasing_SupplierTransaction>>
+    + DeleteSupplierTransaction(supplierTransaction:Purchasing_SupplierTransaction) : void
+}
+class "RepositoryBase"<T> {
+}
+"RepositoryBase" "<Purchasing_SupplierTransaction>" <|-- SupplierTransactionsRepository
+ISupplierTransactionsRepository <|-- SupplierTransactionsRepository
+class CsvOutputFormatter {
+    + CsvOutputFormatter()
+    + <<override>> <<async>> WriteResponseBodyAsync(context:OutputFormatterWriteContext, selectedEncoding:Encoding) : Task
+}
+TextOutputFormatter <|-- CsvOutputFormatter
+class MappingProfile {
+    + MappingProfile()
+}
+Profile <|-- MappingProfile
+class Program {
+    + {static} Main(args:string[]) : void
+    + {static} CreateHostBuilder(args:string[]) : IHostBuilder
+}
+class Startup {
+    + Startup(configuration:IConfiguration, env:IWebHostEnvironment)
+    + ConfigureServices(services:IServiceCollection) : void
+    + Configure(app:IApplicationBuilder, env:IWebHostEnvironment, logger:ILoggerManager) : void
+}
+Startup --> "Configuration" IConfiguration
+class SupplierCategoryDto {
+    + SupplierCategoryId : int <<get>> <<set>>
+    + SupplierCategoryName : string <<get>> <<set>>
+    + LastEditedBy : int <<get>> <<set>>
+}
+SupplierCategoryDto --> "ValidFrom" DateTime
+SupplierCategoryDto --> "ValidTo" DateTime
+class SupplierCategoryForCreationDto {
+    + LastEditedBy : int <<get>> <<set>>
+}
+class "IEnumerable"<T> {
+}
+SupplierCategoryForManipulationDto <|-- SupplierCategoryForCreationDto
+SupplierCategoryForCreationDto --> "Purchasing_Suppliers<SupplierForCreationDto>" "IEnumerable"
+abstract class SupplierCategoryForManipulationDto {
+    + SupplierCategoryName : string <<get>> <<set>>
+}
+class SupplierCategoryForUpdateDto {
+    + LastEditedBy : int <<get>> <<set>>
+}
+class "IEnumerable"<T> {
+}
+SupplierCategoryForManipulationDto <|-- SupplierCategoryForUpdateDto
+SupplierCategoryForUpdateDto --> "Purchasing_Suppliers<SupplierForCreationDto>" "IEnumerable"
+class SupplierDto {
+    + SupplierId : int <<get>> <<set>>
+    + SupplierCategoryId : int <<get>> <<set>>
+    + PrimaryContactPersonId : int <<get>> <<set>>
+    + AlternateContactPersonId : int <<get>> <<set>>
+    + DeliveryMethodId : int? <<get>> <<set>>
+    + DeliveryCityId : int <<get>> <<set>>
+    + PostalCityId : int <<get>> <<set>>
+    + SupplierReference : string <<get>> <<set>>
+    + BankAccountName : string <<get>> <<set>>
+    + BankAccountBranch : string <<get>> <<set>>
+    + BankAccountCode : string <<get>> <<set>>
+    + BankAccountNumber : string <<get>> <<set>>
+    + BankInternationalCode : string <<get>> <<set>>
+    + PaymentDays : int <<get>> <<set>>
+    + InternalComments : string <<get>> <<set>>
+    + PhoneNumber : string <<get>> <<set>>
+    + FaxNumber : string <<get>> <<set>>
+    + WebsiteUrl : string <<get>> <<set>>
+    + DeliveryAddressLine1 : string <<get>> <<set>>
+    + DeliveryAddressLine2 : string <<get>> <<set>>
+    + DeliveryPostalCode : string <<get>> <<set>>
+    + PostalAddressLine1 : string <<get>> <<set>>
+    + PostalAddressLine2 : string <<get>> <<set>>
+    + PostalPostalCode : string <<get>> <<set>>
+    + LastEditedBy : int <<get>> <<set>>
+}
+SupplierForManipulationDto <|-- SupplierDto
+SupplierDto --> "ValidFrom" DateTime
+SupplierDto --> "ValidTo" DateTime
+class SupplierForCreationDto {
+    + SupplierCategoryId : int <<get>> <<set>>
+    + PrimaryContactPersonId : int <<get>> <<set>>
+    + AlternateContactPersonId : int <<get>> <<set>>
+    + DeliveryMethodId : int? <<get>> <<set>>
+    + DeliveryCityId : int <<get>> <<set>>
+    + PostalCityId : int <<get>> <<set>>
+    + SupplierReference : string <<get>> <<set>>
+    + BankAccountName : string <<get>> <<set>>
+    + BankAccountBranch : string <<get>> <<set>>
+    + BankAccountCode : string <<get>> <<set>>
+    + BankAccountNumber : string <<get>> <<set>>
+    + BankInternationalCode : string <<get>> <<set>>
+    + PaymentDays : int <<get>> <<set>>
+    + InternalComments : string <<get>> <<set>>
+    + PhoneNumber : string <<get>> <<set>>
+    + FaxNumber : string <<get>> <<set>>
+    + WebsiteUrl : string <<get>> <<set>>
+    + DeliveryAddressLine1 : string <<get>> <<set>>
+    + DeliveryAddressLine2 : string <<get>> <<set>>
+    + DeliveryPostalCode : string <<get>> <<set>>
+    + PostalAddressLine1 : string <<get>> <<set>>
+    + PostalAddressLine2 : string <<get>> <<set>>
+    + PostalPostalCode : string <<get>> <<set>>
+    + LastEditedBy : int <<get>> <<set>>
+}
+SupplierForManipulationDto <|-- SupplierForCreationDto
+abstract class SupplierForManipulationDto {
+    + SupplierName : string <<get>> <<set>>
+}
+class SupplierForUpdateDto {
+    + SupplierCategoryId : int <<get>> <<set>>
+    + PrimaryContactPersonId : int <<get>> <<set>>
+    + AlternateContactPersonId : int <<get>> <<set>>
+    + DeliveryMethodId : int? <<get>> <<set>>
+    + DeliveryCityId : int <<get>> <<set>>
+    + PostalCityId : int <<get>> <<set>>
+    + SupplierReference : string <<get>> <<set>>
+    + BankAccountName : string <<get>> <<set>>
+    + BankAccountBranch : string <<get>> <<set>>
+    + BankAccountCode : string <<get>> <<set>>
+    + BankAccountNumber : string <<get>> <<set>>
+    + BankInternationalCode : string <<get>> <<set>>
+    + PaymentDays : int <<get>> <<set>>
+    + InternalComments : string <<get>> <<set>>
+    + PhoneNumber : string <<get>> <<set>>
+    + FaxNumber : string <<get>> <<set>>
+    + WebsiteUrl : string <<get>> <<set>>
+    + DeliveryAddressLine1 : string <<get>> <<set>>
+    + DeliveryAddressLine2 : string <<get>> <<set>>
+    + DeliveryPostalCode : string <<get>> <<set>>
+    + PostalAddressLine1 : string <<get>> <<set>>
+    + PostalAddressLine2 : string <<get>> <<set>>
+    + PostalPostalCode : string <<get>> <<set>>
+    + LastEditedBy : int <<get>> <<set>>
+}
+SupplierForManipulationDto <|-- SupplierForUpdateDto
+class SupplierTransactionDto {
+    + SupplierTransactionId : int <<get>> <<set>>
+    + SupplierId : int <<get>> <<set>>
+    + TransactionTypeId : int <<get>> <<set>>
+    + PurchaseOrderId : int? <<get>> <<set>>
+    + PaymentMethodId : int? <<get>> <<set>>
+    + SupplierInvoiceNumber : string <<get>> <<set>>
+    + AmountExcludingTax : decimal <<get>> <<set>>
+    + TaxAmount : decimal <<get>> <<set>>
+    + TransactionAmount : decimal <<get>> <<set>>
+    + OutstandingBalance : decimal <<get>> <<set>>
+    + FinalizationDate : DateTime? <<get>> <<set>>
+    + IsFinalized : bool? <<get>>
+    + LastEditedBy : int <<get>> <<set>>
+}
+SupplierTransactionDto --> "TransactionDate" DateTime
+SupplierTransactionDto --> "LastEditedWhen" DateTime
+class SupplierTransactionForCreationDto {
+    + SupplierTransactionId : int <<get>> <<set>>
+    + TransactionTypeId : int <<get>> <<set>>
+    + PurchaseOrderId : int? <<get>> <<set>>
+    + PaymentMethodId : int? <<get>> <<set>>
+    + SupplierInvoiceNumber : string <<get>> <<set>>
+    + AmountExcludingTax : decimal <<get>> <<set>>
+    + TaxAmount : decimal <<get>> <<set>>
+    + TransactionAmount : decimal <<get>> <<set>>
+    + OutstandingBalance : decimal <<get>> <<set>>
+    + FinalizationDate : DateTime? <<get>> <<set>>
+    + IsFinalized : bool? <<get>>
+    + LastEditedBy : int <<get>> <<set>>
+}
+SupplierTransactionForManipulationDto <|-- SupplierTransactionForCreationDto
+SupplierTransactionForCreationDto --> "TransactionDate" DateTime
+SupplierTransactionForCreationDto --> "LastEditedWhen" DateTime
+abstract class SupplierTransactionForManipulationDto {
+    + SupplierId : int <<get>> <<set>>
+}
+class SupplierTransactionForUpdateDto {
+    + TransactionTypeId : int <<get>> <<set>>
+    + PurchaseOrderId : int? <<get>> <<set>>
+    + PaymentMethodId : int? <<get>> <<set>>
+    + SupplierInvoiceNumber : string <<get>> <<set>>
+    + AmountExcludingTax : decimal <<get>> <<set>>
+    + TaxAmount : decimal <<get>> <<set>>
+    + TransactionAmount : decimal <<get>> <<set>>
+    + OutstandingBalance : decimal <<get>> <<set>>
+    + FinalizationDate : DateTime? <<get>> <<set>>
+    + IsFinalized : bool? <<get>>
+    + LastEditedBy : int <<get>> <<set>>
+}
+SupplierTransactionForManipulationDto <|-- SupplierTransactionForUpdateDto
+SupplierTransactionForUpdateDto --> "TransactionDate" DateTime
+SupplierTransactionForUpdateDto --> "LastEditedWhen" DateTime
+class ErrorDetails {
+    + StatusCode : int <<get>> <<set>>
+    + Message : string <<get>> <<set>>
+    + <<override>> ToString() : string
+}
+class Link {
+    + Link()
+    + Link(href:string, rel:string, method:string)
+    + Href : string <<get>> <<set>>
+    + Rel : string <<get>> <<set>>
+    + Method : string <<get>> <<set>>
+}
+class "LinkCollectionWrapper"<T> {
+    + LinkCollectionWrapper()
+    + LinkCollectionWrapper(value:List<T>)
+}
+class "List"<T> {
+}
+LinkResourceBase <|-- "LinkCollectionWrapper"
+"LinkCollectionWrapper" o-> "Value<T>" "List"
+class LinkResourceBase {
+}
+class "List"<T> {
+}
+LinkResourceBase o-> "Links<Link>" "List"
+class LinkResponse {
+    + LinkResponse()
+    + HasLinks : bool <<get>> <<set>>
+}
+class "List"<T> {
+}
+class "LinkCollectionWrapper"<T> {
+}
+LinkResponse --> "ShapedEntities<Entity>" "List"
+LinkResponse --> "LinkedEntities<Entity>" "LinkCollectionWrapper"
+class Entity {
+    + Entity()
+    + Add(key:string, value:object) : void
+    + ContainsKey(key:string) : bool
+    + Remove(key:string) : bool
+    + TryGetValue(key:string, value:object) : bool
+    + Add(item:KeyValuePair<string, object>) : void
+    + Clear() : void
+    + Contains(item:KeyValuePair<string, object>) : bool
+    + CopyTo(array:KeyValuePair<string, object>[], arrayIndex:int) : void
+    + Count : int <<get>>
+    + IsReadOnly : bool <<get>>
+    + Remove(item:KeyValuePair<string, object>) : bool
+    + GetEnumerator() : IEnumerator<KeyValuePair<string, object>>
+    GetEnumerator() : IEnumerator
+    + GetSchema() : XmlSchema
+    + ReadXml(reader:XmlReader) : void
+    + WriteXml(writer:XmlWriter) : void
+    + <<override>> TryGetMember(binder:GetMemberBinder, result:object) : bool
+    + <<override>> TrySetMember(binder:SetMemberBinder, value:object) : bool
+}
+class "IDictionary`2"<T1,T2> {
+}
+class "ICollection"<T> {
+}
+DynamicObject <|-- Entity
+IXmlSerializable <|-- Entity
+"IDictionary`2" "<string,object>" <|-- Entity
+Entity --> "Keys<string>" "ICollection"
+Entity --> "Values<object>" "ICollection"
+class ShapedEntity {
+    + ShapedEntity()
+    + Id : int <<get>> <<set>>
+}
+ShapedEntity --> "Entity" Entity
+class MetaData {
+    + CurrentPage : int <<get>> <<set>>
+    + TotalPages : int <<get>> <<set>>
+    + PageSize : int <<get>> <<set>>
+    + TotalCount : int <<get>> <<set>>
+    + HasPrevious : bool <<get>>
+    + HasNext : bool <<get>>
+}
+class "PagedList"<T> {
+    + PagedList(items:List<T>, count:int, pageNumber:int, pageSize:int)
+    + {static} ToPagedList(source:IEnumerable<T>, pageNumber:int, pageSize:int) : PagedList<T>
+    + {static} ToPagedList(source:IEnumerable<T>, pageNumber:int, pageSize:int, count:int) : PagedList<T>
+}
+class "List"<T> {
+}
+"List" "<T>" <|-- "PagedList"
+"PagedList" --> "MetaData" MetaData
+abstract class RequestParameters {
+    + PageNumber : int <<get>> <<set>> = 1
+    + PageSize : int <<get>> <<set>>
+    + OrderBy : string <<get>> <<set>>
+    + Fields : string <<get>> <<set>>
+}
+class SupplierParameters {
+    + SupplierParameters()
+    + MinPaymentMethod : uint <<get>> <<set>> = 1
+    + MaxPaymentMethod : uint <<get>> <<set>> = 4
+    + ValidPaymentMethodRange : bool <<get>>
+    + SupplierInvoiceNumber : string <<get>> <<set>>
+    + SupplierId : int <<get>> <<set>>
+}
+RequestParameters <|-- SupplierParameters
+class "DataShaper"<T> {
+    + DataShaper()
+    + ShapeData(entities:IEnumerable<T>, fieldsString:string) : IEnumerable<ShapedEntity>
+    + ShapeData(entity:T, fieldsString:string) : ShapedEntity
+}
+class "IDataShaper"<T> {
+}
+"IDataShaper" "<T>" <|-- "DataShaper"
+class RepositoryTransactionExtensions <<static>> {
+    + {static} FilterByPaymentMethod(transactions:IQueryable<Purchasing_SupplierTransaction>, minPaymentMethod:uint, maxPaymentMethod:uint) : IQueryable<Purchasing_SupplierTransaction>
+    + {static} SearchForSupplierInvoiceNumber(transactions:IQueryable<Purchasing_SupplierTransaction>, supplierInvoiceNumber:string) : IQueryable<Purchasing_SupplierTransaction>
+    + {static} Sort(transactions:IQueryable<Purchasing_SupplierTransaction>, orderByQueryString:string) : IQueryable<Purchasing_SupplierTransaction>
+}
+class OrderQueryBuilder <<static>> {
+    + {static} CreateOrderQuery(orderByQueryString:string) : string
+}
+class ValidateMediaTypeAttribute {
+    + OnActionExecuting(context:ActionExecutingContext) : void
+    + OnActionExecuted(context:ActionExecutedContext) : void
+}
+IActionFilter <|-- ValidateMediaTypeAttribute
+class ValidateSupplierCategoryExistsAttribute {
+    + ValidateSupplierCategoryExistsAttribute(repository:IRepositoryManager, logger:ILoggerManager)
+    + <<async>> OnActionExecutionAsync(context:ActionExecutingContext, next:ActionExecutionDelegate) : Task
+}
+IAsyncActionFilter <|-- ValidateSupplierCategoryExistsAttribute
+class ValidateSupplierCategoryForSupplierExistsAttribute <<sealed>> {
+    + ValidateSupplierCategoryForSupplierExistsAttribute(repository:IRepositoryManager, logger:ILoggerManager)
+    + <<async>> OnActionExecutionAsync(context:ActionExecutingContext, next:ActionExecutionDelegate) : Task
+}
+IAsyncActionFilter <|-- ValidateSupplierCategoryForSupplierExistsAttribute
+class ValidateSupplierTransactionExistsAttribute {
+    + ValidateSupplierTransactionExistsAttribute(repository:IRepositoryManager, logger:ILoggerManager)
+    + <<async>> OnActionExecutionAsync(context:ActionExecutingContext, next:ActionExecutionDelegate) : Task
+}
+IAsyncActionFilter <|-- ValidateSupplierTransactionExistsAttribute
+class ValidationFilterAttribute {
+    + ValidationFilterAttribute(logger:ILoggerManager)
+    + OnActionExecuting(context:ActionExecutingContext) : void
+    + OnActionExecuted(context:ActionExecutedContext) : void
+}
+IActionFilter <|-- ValidationFilterAttribute
+class RootController {
+    + RootController(linkGenerator:LinkGenerator)
+    + GetRoot(mediaType:string) : IActionResult
+}
+ControllerBase <|-- RootController
+class SupplierCategoriesController <<sealed>> {
+    + SupplierCategoriesController(repository:IRepositoryManager, logger:ILoggerManager, mapper:IMapper)
+    + <<async>> GetSupplierCategories() : Task<IActionResult>
+    + <<async>> GetSupplierCategory(id:int) : Task<IActionResult>
+    + <<async>> GetSupplierCategoryCollection(ids:IEnumerable<int>) : Task<IActionResult>
+    + <<async>> GetSuppliersForSupplierCategory(id:int) : Task<IActionResult>
+    + <<async>> GetSupplierForSupplierCategory(supplierCategoryId:int, id:int) : Task<IActionResult>
+    + <<async>> CreateSupplierCategory(supplierCategory:SupplierCategoryForCreationDto) : Task<IActionResult>
+    + <<async>> CreateSupplierCategoryCollection(supplierCategoryCollection:IEnumerable<SupplierCategoryForCreationDto>) : Task<IActionResult>
+    + <<async>> DeleteSupplierCategory(id:int) : Task<IActionResult>
+    + <<async>> UpdateSupplierCategory(id:int, supplierCategory:SupplierCategoryForUpdateDto) : Task<IActionResult>
+    + <<async>> PartiallyUpdateSupplierForSupplierCategory(supplierCategoryId:int, patchDoc:JsonPatchDocument<SupplierCategoryForUpdateDto>) : Task<IActionResult>
+}
+ControllerBase <|-- SupplierCategoriesController
+class SuppliersController {
+    + SuppliersController(repository:IRepositoryManager, logger:ILoggerManager, mapper:IMapper)
+    + GetSuppliersOptions() : IActionResult
+    + <<async>> GetSuppliers() : Task<IActionResult>
+    + <<async>> GetSuppliers(id:int) : Task<IActionResult>
+    + <<async>> CreateSupplier(supplier:SupplierForCreationDto) : Task<IActionResult>
+    + <<async>> CreateSupplierForSupplierCategory(id:int, supplier:SupplierForCreationDto) : Task<IActionResult>
+    + <<async>> UpdateSupplierForSupplierCategory(id:int, supplierCategoryId:int, supplier:SupplierForUpdateDto) : Task<IActionResult>
+    + <<async>> PartiallyUpdateSupplierForSupplierCategory(id:int, supplierCategoryId:int, patchDoc:JsonPatchDocument<SupplierForUpdateDto>) : Task<IActionResult>
+}
+ControllerBase <|-- SuppliersController
+class SupplierTransactionsController <<sealed>> {
+    + SupplierTransactionsController(repository:IRepositoryManager, logger:ILoggerManager, mapper:IMapper, dataShaper:IDataShaper<SupplierTransactionDto>, supplierTransactionLinks:SupplierTransactionLinks)
+    + <<async>> GetTransactionsForSupplier(supplierId:int, supplierParameters:SupplierParameters) : Task<IActionResult>
+    + <<async>> GetTransactionForSupplier(supplierId:int, id:int) : Task<IActionResult>
+    + <<async>> CreateSupplierTransaction(supplierId:int, supplierTransaction:SupplierTransactionForCreationDto) : Task<IActionResult>
+    + <<async>> CreateSupplierTransactionCollection(supplierTransactionCollection:IEnumerable<SupplierTransactionForCreationDto>) : Task<IActionResult>
+    + <<async>> DeleteSupplierTransaction(supplierId:int, id:int) : Task<IActionResult>
+    + <<async>> UpdateSupplierTransaction(supplierId:int, id:int, supplierTransaction:SupplierTransactionForUpdateDto) : Task<IActionResult>
+    + <<async>> PartiallyUpdateSupplierTransaction(supplierId:int, id:int, patchDoc:JsonPatchDocument<SupplierTransactionForUpdateDto>) : Task<IActionResult>
+}
+ControllerBase <|-- SupplierTransactionsController
+class ExceptionMiddlewareExtensions <<static>> {
+    + {static} ConfigureExceptionHandler(app:IApplicationBuilder, logger:ILoggerManager) : void
+}
+class ServiceExtensions <<static>> {
+    + {static} ConfigureCors(services:IServiceCollection) : void
+    + {static} ConfigureIISIntegration(services:IServiceCollection) : void
+    + {static} ConfigureLoggerService(services:IServiceCollection) : void
+    + {static} ConfigureSqlContext(services:IServiceCollection, configuration:IConfiguration, env:IWebHostEnvironment) : void
+    + {static} ConfigureRepositoryManager(services:IServiceCollection) : void
+    + {static} AddCustomCSVFormatter(builder:IMvcBuilder) : IMvcBuilder
+    + {static} ConfigureVersioning(services:IServiceCollection) : void
+    + {static} ConfigureSwagger(services:IServiceCollection) : void
+    + {static} AddCustomMediaTypes(services:IServiceCollection) : void
+    + {static} ConfigureResponseCaching(services:IServiceCollection) : void
+    + {static} ConfigureHttpCacheHeaders(services:IServiceCollection) : void
+    + {static} ConfigureRateLimitingOptions(services:IServiceCollection) : void
+}
+class ArrayModelBinder {
+    + BindModelAsync(bindingContext:ModelBindingContext) : Task
+}
+IModelBinder <|-- ArrayModelBinder
+class SupplierTransactionLinks {
+    + SupplierTransactionLinks(linkGenerator:LinkGenerator, dataShaper:IDataShaper<SupplierTransactionDto>)
+    + TryGenerateLinks(transactionsDto:IEnumerable<SupplierTransactionDto>, fields:string, supplierId:int, httpContext:HttpContext) : LinkResponse
+}
+@enduml

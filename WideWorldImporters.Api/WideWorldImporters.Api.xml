@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WideWorldImporters.Api</name>
+    </assembly>
+    <members>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.GetSupplierCategories">
+            <summary>
+                Gets a list of all supplier categories
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.GetSupplierCategory(System.Int32)">
+            <summary>
+                Get a supplier category entity
+            </summary>
+            <param name="id">SupplierCategoryId</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.GetSupplierCategoryCollection(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>
+                Get a list of several supplier categories
+            </summary>
+            <param name="ids">SupplierCategoryIds</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.GetSuppliersForSupplierCategory(System.Int32)">
+            <summary>
+                Get a list of suppliers for a supplier category
+            </summary>
+            <param name="id">SupplierCategoryId</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.GetSupplierForSupplierCategory(System.Int32,System.Int32)">
+            <summary>
+                Get a supplier for a supplier category
+            </summary>
+            <param name="supplierCategoryId">SupplierCategoryId</param>
+            <param name="id">SupplierId</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.CreateSupplierCategory(Entities.DataTransferObjects.SupplierCategoryForCreationDto)">
+            <summary>
+                Create a supplier category
+            </summary>
+            <param name="supplierCategory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.CreateSupplierCategoryCollection(System.Collections.Generic.IEnumerable{Entities.DataTransferObjects.SupplierCategoryForCreationDto})">
+            <summary>
+                Create many supplier categories
+            </summary>
+            <param name="supplierCategoryCollection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.DeleteSupplierCategory(System.Int32)">
+            <summary>
+                Delete supplier category
+            </summary>
+            <param name="id">supplierCategoryId</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.UpdateSupplierCategory(System.Int32,Entities.DataTransferObjects.SupplierCategoryForUpdateDto)">
+            <summary>
+                Update supplier category record
+            </summary>
+            <param name="id"></param>
+            <param name="supplierCategory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierCategoriesController.PartiallyUpdateSupplierForSupplierCategory(System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{Entities.DataTransferObjects.SupplierCategoryForUpdateDto})">
+            <summary>
+                Partially update a supplier category record
+            </summary>
+            <param name="supplierCategoryId"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierTransactionsController.GetTransactionsForSupplier(System.Int32,Entities.RequestFeatures.SupplierParameters)">
+            <summary>
+                Gets the list of transactions for a supplier
+            </summary>
+            <param name="supplierId">SupplierId</param>
+            <param name="supplierParameters">Query string parameters if they exists</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierTransactionsController.GetTransactionForSupplier(System.Int32,System.Int32)">
+            <summary>
+                Get a transaction
+            </summary>
+            <param name="supplierId">supplierId</param>
+            <param name="id">supplierTransactionId</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierTransactionsController.CreateSupplierTransaction(System.Int32,Entities.DataTransferObjects.SupplierTransactionForCreationDto)">
+            <summary>
+                Create a supplier transaction
+            </summary>
+            <param name="supplierId">supplierId</param>
+            <param name="supplierTransaction">DTO used whan creating records</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierTransactionsController.CreateSupplierTransactionCollection(System.Collections.Generic.IEnumerable{Entities.DataTransferObjects.SupplierTransactionForCreationDto})">
+            <summary>
+                Create multiple supplier transactions
+            </summary>
+            <param name="supplierTransactionCollection">DTO used when creating records</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierTransactionsController.DeleteSupplierTransaction(System.Int32,System.Int32)">
+            <summary>
+                Delete a transaction
+            </summary>
+            <param name="supplierId">supplierId</param>
+            <param name="id">supplierTransactionId</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierTransactionsController.UpdateSupplierTransaction(System.Int32,System.Int32,Entities.DataTransferObjects.SupplierTransactionForUpdateDto)">
+            <summary>
+                Update a supplier transaction
+            </summary>
+            <param name="supplierId">supplierId</param>
+            <param name="id">supplierTransactionId</param>
+            <param name="supplierTransaction">DTO used when updating a record</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImportersWebApi.Controllers.SupplierTransactionsController.PartiallyUpdateSupplierTransaction(System.Int32,System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{Entities.DataTransferObjects.SupplierTransactionForUpdateDto})">
+            <summary>
+                Partially update a supplier tranaction
+            </summary>
+            <param name="supplierId">supplierId</param>
+            <param name="id">supplierTransactionId</param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Api.Controllers.SuppliersController.GetSuppliersOptions">
+            <summary>
+                Return options
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Api.Controllers.SuppliersController.GetSuppliers">
+            <summary>
+                Gets a list of all suppliers
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Api.Controllers.SuppliersController.GetSuppliers(System.Int32)">
+            <summary>
+                Get a supplier
+            </summary>
+            <param name="id">SupplierId</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Api.Controllers.SuppliersController.CreateSupplier(Entities.DataTransferObjects.SupplierForCreationDto)">
+            <summary>
+                Creates a supplier
+            </summary>
+            <param name="supplier"></param>
+            <returns>A newly created supplier</returns>
+            <response code="201">Returns the newly created item</response>
+            <response code="400">If the item is null</response>
+            <response code="422">If the model is invalid</response>
+        </member>
+        <member name="M:WideWorldImporters.Api.Controllers.SuppliersController.CreateSupplierForSupplierCategory(System.Int32,Entities.DataTransferObjects.SupplierForCreationDto)">
+            <summary>
+                Create a supplier for a supplier category
+            </summary>
+            <param name="id"></param>
+            <param name="supplier"></param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Api.Controllers.SuppliersController.UpdateSupplierForSupplierCategory(System.Int32,System.Int32,Entities.DataTransferObjects.SupplierForUpdateDto)">
+            <summary>
+                Update supplier
+            </summary>
+            <param name="id">Supplier</param>
+            <param name="supplierCategoryId">Supplier Category</param>
+            <param name="supplier">Payload</param>
+            <returns></returns>
+        </member>
+        <member name="M:WideWorldImporters.Api.Controllers.SuppliersController.PartiallyUpdateSupplierForSupplierCategory(System.Int32,System.Int32,Microsoft.AspNetCore.JsonPatch.JsonPatchDocument{Entities.DataTransferObjects.SupplierForUpdateDto})">
+            <summary>
+                Partially update a supplier
+            </summary>
+            <param name="supplierCategoryId"></param>
+            <param name="id"></param>
+            <param name="patchDoc"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

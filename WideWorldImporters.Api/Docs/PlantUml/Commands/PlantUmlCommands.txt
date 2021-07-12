@@ -1,0 +1,9 @@
+
+https://plantuml.com/command-line
+
+PlantUmlClassDiagramGenerator F:\0-GitHub\WideWorldImportersWebApiMaster\Src\WideWorldImportersWebApi\Entities\DataTransferObjects F:\0-GitHub\WideWorldImportersWebApiMaster\Src\WideWorldImportersWebApi\WideWorldImportersWebApi\Docs\PlantUml -dir -ignore Private,Protected -createAssociation -allInOne
+
+PlantUmlClassDiagramGenerator F:\0-GitHub\WideWorldImportersWebApiMaster\Src\WideWorldImportersWebApi F:\0-GitHub\WideWorldImportersWebApiMaster\Src\WideWorldImportersWebApi\WideWorldImportersWebApi\Docs\PlantUmlOutput -dir -ignore Private,Protected -excludePaths bin,obj,Properties -createAssociation -allInOne
+
+PlantUmlClassDiagramGenerator F:\0-GitHub\WideWorldImportersWebApiMaster\Src\WideWorldImportersWebApi F:\0-GitHub\WideWorldImportersWebApiMaster\Src\WideWorldImportersWebApi\WideWorldImportersWebApi\Docs\PlantUmlOutput -dir -ignore Private,Protected -excludePaths bin,obj,Properties -createAssociation -allInOne
+

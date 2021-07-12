@@ -1,0 +1,16 @@
+﻿
+[ProducesResponseType] notes - https://stackoverflow.com/questions/59587290/web-api-put-return-object-with-proper-http-status-code
+
+https://json2csharp.com/
+
+https://stackoverflow.com/questions/2289420/what-is-the-method-memberwiseclone-doing
+
+https://hibernatingrhinos.com/products/efprof/learn#GettingStarted
+Install-Package EntityFrameworkProfiler -IncludePrerelease
+HibernatingRhinos.Profiler.Appender.EntityFramework.EntityFrameworkProfiler.Initialize();
+
+https://stackoverflow.com/questions/22486489/entity-framework-6-transaction-rollback/28915506#28915506
+
+https://code-maze.com/using-httpclient-to-send-http-patch-requests-in-asp-net-core/
+
+https://stackoverflow.com/questions/62309030/why-is-ok-method-returning-with-text-plain-media-type-instead-of-application-j

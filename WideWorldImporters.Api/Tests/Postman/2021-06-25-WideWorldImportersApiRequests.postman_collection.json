@@ -1,0 +1,1294 @@
+{
+	"info": {
+		"_postman_id": "7ca9195f-f367-4b7d-ad4b-af4a7f2f70c5",
+		"name": "WideWorldImportersRequests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "Supplier",
+					"item": [
+						{
+							"name": "GET - GetSuppliers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/Suppliers",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"Suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSuppliers - Online",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://api.dotnetwebapi.com/api/1.0/Suppliers",
+									"protocol": "http",
+									"host": [
+										"api",
+										"dotnetwebapi",
+										"com"
+									],
+									"path": [
+										"api",
+										"1.0",
+										"Suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSuppliers from IIS",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/Suppliers",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"Suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSupplier",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/Suppliers/4",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"Suppliers",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSuppliersForASupplierCategory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories/42/Suppliers",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories",
+										"42",
+										"Suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSupplierForASupplierCategory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories/42/Suppliers/37",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories",
+										"42",
+										"Suppliers",
+										"37"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSupplierCategoriesXml",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/xml",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSupplierCategoriesAsInvalidCssType",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/css",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Supplier Categories",
+					"item": [
+						{
+							"name": "GET - GetSupplierCategories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSupplierCategory",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories/43",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories",
+										"43"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSupplierCategoriesCsv",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/csv",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetSupplierCategoryCollection",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories/collection/(5,6,7)",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories",
+										"collection",
+										"(5,6,7)"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Supplier Transactions",
+					"item": [
+						{
+							"name": "GET - GetTransactionsForASupplier",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierTransactions/5/Transactions?pageNumber=1&pageSize=16&MinPaymentMethod=4&MaxPaymentMethod=4",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierTransactions",
+										"5",
+										"Transactions"
+									],
+									"query": [
+										{
+											"key": "pageNumber",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "16"
+										},
+										{
+											"key": "MinPaymentMethod",
+											"value": "4"
+										},
+										{
+											"key": "MaxPaymentMethod",
+											"value": "4"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetTransactionForASupplier",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierTransactions/39/Transactions/336255",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierTransactions",
+										"39",
+										"Transactions",
+										"336255"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetTransactionsForASupplierForASupplierInvoiceNumber",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierTransactions/10/Transactions?supplierInvoiceNumber=364",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierTransactions",
+										"10",
+										"Transactions"
+									],
+									"query": [
+										{
+											"key": "supplierInvoiceNumber",
+											"value": "364"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetTransactionsForASupplier - sort by - (SupplierID, TransactionDate)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierTransactions/1/Transactions?orderBy=transactionDate desc",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierTransactions",
+										"1",
+										"Transactions"
+									],
+									"query": [
+										{
+											"key": "orderBy",
+											"value": "transactionDate desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetTransactionsForASupplier - data shaped response",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierTransactions/5/Transactions?pageNumber=1&pageSize=3&MinPaymentMethod=4&MaxPaymentMethod=4&fields=supplierId,supplierTransactionId,transactionDate",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierTransactions",
+										"5",
+										"Transactions"
+									],
+									"query": [
+										{
+											"key": "pageNumber",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "3"
+										},
+										{
+											"key": "MinPaymentMethod",
+											"value": "4"
+										},
+										{
+											"key": "MaxPaymentMethod",
+											"value": "4"
+										},
+										{
+											"key": "fields",
+											"value": "supplierId,supplierTransactionId,transactionDate"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GET - GetTransactionsForASupplier - data shaped response XML",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "text/xml",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierTransactions/5/Transactions?pageNumber=1&pageSize=3&MinPaymentMethod=4&MaxPaymentMethod=4&fields=supplierId,supplierTransactionId,transactionDate",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierTransactions",
+										"5",
+										"Transactions"
+									],
+									"query": [
+										{
+											"key": "pageNumber",
+											"value": "1"
+										},
+										{
+											"key": "pageSize",
+											"value": "3"
+										},
+										{
+											"key": "MinPaymentMethod",
+											"value": "4"
+										},
+										{
+											"key": "MaxPaymentMethod",
+											"value": "4"
+										},
+										{
+											"key": "fields",
+											"value": "supplierId,supplierTransactionId,transactionDate"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HATEOAS",
+					"item": [
+						{
+							"name": "GET - GetTransactionsForASupplier - (hateoas)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/vnd.gmcbath.hateoas+json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/suppliertransactions/5/transactions",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"suppliertransactions",
+										"5",
+										"transactions"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": null
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "Supplier Category",
+					"item": [
+						{
+							"name": "POST - SupplierCategory",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplierCategoryName\": \"Supplier Category Test From Postman - New 7\",\r\n    \"lastEditedBy\": 1\r\n}"
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST - SupplierCategory collection",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"supplierCategoryName\": \"Supplier Category Test From Postman - New 5\",\r\n        \"lastEditedBy\": 1\r\n    },\r\n    {\r\n        \"supplierCategoryName\": \"Supplier Category Test From Postman - New 6\",\r\n        \"lastEditedBy\": 16\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierCategories/collection",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierCategories",
+										"collection"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Supplier",
+					"item": [
+						{
+							"name": "POST - Supplier",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Transfer-Encoding",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"primaryContactPersonId\": 21,\r\n    \"alternateContactPersonId\": 22,\r\n    \"deliveryMethodId\": 7,\r\n    \"deliveryCityId\": 38171,\r\n    \"postalCityId\": 38171,\r\n    \"supplierReference\": \"AA20384\",\r\n    \"bankAccountName\": \"A Datum Corporation - POST 1\",\r\n    \"bankAccountBranch\": \"Woodgrove Bank Zionsville\",\r\n    \"bankAccountCode\": \"356981\",\r\n    \"bankAccountNumber\": \"8575824136\",\r\n    \"bankInternationalCode\": \"25986\",\r\n    \"paymentDays\": 14,\r\n    \"internalComments\": null,\r\n    \"phoneNumber\": \"(847) 555-0100\",\r\n    \"faxNumber\": \"(847) 555-0101\",\r\n    \"websiteUrl\": \"http://www.adatum.com\",\r\n    \"deliveryAddressLine1\": \"Suite 10\",\r\n    \"deliveryAddressLine2\": \"183838 Southwest Boulevard\",\r\n    \"deliveryPostalCode\": \"46077\",\r\n    \"postalAddressLine1\": \"PO Box 1039\",\r\n    \"postalAddressLine2\": \"Add new value\",\r\n    \"postalPostalCode\": \"46077\",\r\n    \"lastEditedBy\": 1,\r\n    \"validFrom\": \"2021-06-11T21:31:17.1368883\",\r\n    \"validTo\": \"9999-12-31T23:59:59.9999999\",\r\n    \"supplierName\": \"Test Supplier - New 11\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/Suppliers/54",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"Suppliers",
+										"54"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "SupplierTransactions",
+					"item": [
+						{
+							"name": "POST - SupplierTransaction",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplierId\": 44,\r\n    \"transactionTypeId\": 5,\r\n    \"purchaseOrderId\": 2,\r\n    \"paymentMethodId\": 4,\r\n    \"supplierInvoiceNumber\": \"222\",\r\n    \"transactionDate\": \"2021-06-17T00:00:00\",\r\n    \"amountExcludingTax\": 21732.00,\r\n    \"taxAmount\": 3259.80,\r\n    \"transactionAmount\": 24991.80,\r\n    \"outstandingBalance\": 0.00,\r\n    \"finalizationDate\": \"2013-01-07T00:00:00\",\r\n    \"isFinalized\": true,\r\n    \"lastEditedBy\": 4\r\n}"
+								},
+								"url": {
+									"raw": "https://localhost:5001/api/1.0/SupplierTransactions/44/Transactions",
+									"protocol": "https",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"1.0",
+										"SupplierTransactions",
+										"44",
+										"Transactions"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "DELETE -  Delete Supplier for SupplierCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/SupplierCategories/39/Categories/44",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"SupplierCategories",
+								"39",
+								"Categories",
+								"44"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Delete SupplierCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/SupplierCategories/42",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"SupplierCategories",
+								"42"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE - Delete Transaction",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/SupplierTransactions/39/transactions/336261",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"SupplierTransactions",
+								"39",
+								"transactions",
+								"336261"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "PUT - Update SupplierCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Access-Control-Request-Headers",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"supplierCategoryName\": \"Supplier Category Test From Postman - PUT 2\",\r\n    \"lastEditedBy\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/SupplierCategories/54",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"SupplierCategories",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Update Supplier for SupplierCategory",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"supplierCategoryId\": 54,\r\n    \"primaryContactPersonId\": 21,\r\n    \"alternateContactPersonId\": 22,\r\n    \"deliveryMethodId\": 7,\r\n    \"deliveryCityId\": 38171,\r\n    \"postalCityId\": 38171,\r\n    \"supplierReference\": \"AA20384\",\r\n    \"bankAccountName\": \"A Datum Corporation - PUT 3\",\r\n    \"bankAccountBranch\": \"Woodgrove Bank Zionsville\",\r\n    \"bankAccountCode\": \"356981\",\r\n    \"bankAccountNumber\": \"8575824136\",\r\n    \"bankInternationalCode\": \"25986\",\r\n    \"paymentDays\": 14,\r\n    \"internalComments\": null,\r\n    \"phoneNumber\": \"(847) 555-0100\",\r\n    \"faxNumber\": \"(847) 555-0101\",\r\n    \"websiteUrl\": \"http://www.adatum.com\",\r\n    \"deliveryAddressLine1\": \"Suite 10\",\r\n    \"deliveryAddressLine2\": \"183838 Southwest Boulevard\",\r\n    \"deliveryPostalCode\": \"46077\",\r\n    \"postalAddressLine1\": \"PO Box 1039\",\r\n    \"postalAddressLine2\": \"Add new value\",\r\n    \"postalPostalCode\": \"46077\",\r\n    \"lastEditedBy\": 1,\r\n    \"validFrom\": \"2021-06-16T16:27:12.5166018\",\r\n    \"validTo\": \"9999-12-31T23:59:59.9999999\",\r\n    \"supplierName\": \"Test Supplier - New 1111\"\r\n}"
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/Suppliers/44/SupplierCategories/54",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"Suppliers",
+								"44",
+								"SupplierCategories",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT - Update Supplier Transaction",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Access-Control-Request-Headers",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"supplierId\": 44,\r\n    \"transactionTypeId\": 5,\r\n    \"purchaseOrderId\": 1,\r\n    \"paymentMethodId\": 4,\r\n    \"supplierInvoiceNumber\": \"7290\",\r\n    \"transactionDate\": \"2021-07-20T00:00:00\",\r\n    \"amountExcludingTax\": 313.50,\r\n    \"taxAmount\": 47.03,\r\n    \"transactionAmount\": 360.53,\r\n    \"outstandingBalance\": 0.00,\r\n    \"finalizationDate\": \"2013-01-07T00:00:00\",\r\n    \"isFinalized\": true,\r\n    \"lastEditedBy\": 4,\r\n    \"lastEditedWhen\": \"2021-06-16T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/SupplierTransactions/44/transactions/336262",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"SupplierTransactions",
+								"44",
+								"transactions",
+								"336262"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PATCH",
+			"item": [
+				{
+					"name": "PATCH - Supplier for SupplierCategory (replace)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n\t{\r\n\t    \"op\": \"replace\",\r\n\t    \"path\": \"/DeliveryAddressLine2\",\r\n\t    \"value\": \"DeliveryAddressLine2 - PATCH 1 - replace\"\r\n    }\r\n]"
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/Suppliers/44/SupplierCategories/54",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"Suppliers",
+								"44",
+								"SupplierCategories",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH - Supplier for SupplierCategory (remove)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Transfer-Encoding",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n\t{\r\n\t    \"op\": \"remove\",\r\n\t    \"path\": \"/DeliveryAddressLine2\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/Suppliers/44/SupplierCategories/54",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"Suppliers",
+								"44",
+								"SupplierCategories",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH - Supplier for SupplierCategory (add)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n\t{\r\n\t    \"op\": \"add\",\r\n\t    \"path\": \"/DeliveryAddressLine2\",\r\n\t    \"value\": \"DeliveryAddressLine2 - PATCH 1 - add\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/Suppliers/44/SupplierCategories/54",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"Suppliers",
+								"44",
+								"SupplierCategories",
+								"54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH - Supplier Transaction (replace)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n\t{\r\n\t    \"op\": \"replace\",\r\n\t    \"path\": \"/LastEditedWhen\",\r\n\t    \"value\": \"2021-06-15T00:00:00\"\r\n    }\r\n]"
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/SupplierTransactions/336255",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"SupplierTransactions",
+								"336255"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PATCH - Supplier Transaction (remove)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/vnd.api+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n\t{\r\n\t    \"op\": \"remove\",\r\n\t    \"path\": \"/LastEditedWhen\"\r\n    }\r\n]"
+						},
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/SupplierTransactions/336255",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"SupplierTransactions",
+								"336255"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Swagger",
+			"item": [
+				{
+					"name": "Swagger - JSON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/swagger/v1/swagger.json",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"swagger",
+								"v1",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger - UI",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/swagger/index.html",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"swagger",
+								"index.html"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger - UI - Online",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://api.dotnetwebapi.com/swagger/index.html",
+							"protocol": "http",
+							"host": [
+								"api",
+								"dotnetwebapi",
+								"com"
+							],
+							"path": [
+								"swagger",
+								"index.html"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OPTIONS & HEAD",
+			"item": [
+				{
+					"name": "OPTIONS",
+					"request": {
+						"method": "OPTIONS",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/Suppliers",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"Suppliers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HEAD - GetTransactionsForASupplier - data shaped response",
+					"request": {
+						"method": "HEAD",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5001/api/1.0/SupplierTransactions?pageNumber=1&pageSize=3&MinPaymentMethod=4&MaxPaymentMethod=4&fields=supplierId,supplierTransactionId,transactionDate",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0",
+								"SupplierTransactions"
+							],
+							"query": [
+								{
+									"key": "pageNumber",
+									"value": "1"
+								},
+								{
+									"key": "pageSize",
+									"value": "3"
+								},
+								{
+									"key": "MinPaymentMethod",
+									"value": "4"
+								},
+								{
+									"key": "MaxPaymentMethod",
+									"value": "4"
+								},
+								{
+									"key": "fields",
+									"value": "supplierId,supplierTransactionId,transactionDate"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ROOT",
+			"item": [
+				{
+					"name": "GET - Root Document",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/vnd.gmcbath.apiroot+json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://localhost:5001/api/1.0",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"1.0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET - Root Document from IIS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
